@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Marketing Creativo - Transforme sua presença digital com serviços inovadores">
+  <meta name="author" content="Marketing Creativo">
+  <title>Marketing Creativo</title>
+
+  <!-- Importando o Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome para ícones -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+  <!-- Google Fonts: Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0e0e0e;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-header {
+      background-color: #1f1f1f;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-header .text-2xl {
+      color: #7f56d9;
+    }
+
+    .btn-purple {
+      background-color: #7f56d9;
+      color: #fff;
+      border-radius: 30px;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-purple:hover {
+      background-color: #6c4bd9;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #7f56d9;
+      transition: color 0.3s ease;
+    }
+
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(45deg, #1a1a1a, #111);
+    }
+
+    .content-container h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #7f56d9;
+      text-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .content-container p {
+      color: #bbb;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .form-container {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      max-width: 500px;
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 15px;
+      background-color: #333;
+      border: 1px solid #444;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-field:focus {
+      border-color: #7f56d9;
+      outline: none;
+    }
+
+    .input-field::placeholder {
+      color: #bbb;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background-color: #7f56d9;
+      border-radius: 25px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: #6c4bd9;
+      transform: scale(1.05);
+    }
+
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #7f56d9; /* Cor roxa */
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 2s linear infinite;
+      margin: 30px auto;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .content {
+      display: none;
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header Section -->
+  <header class="main-header">
+    <div class="container mx-auto flex justify-between items-center p-6">
+      <div class="text-2xl font-bold">Marketing Creativo</div>
+      <nav class="space-x-6">
+        <a class="nav-link text-lg text-white" href="#">Início</a>
+        <a class="nav-link text-lg text-white" href="#">Serviços</a>
+        <a class="nav-link text-lg text-white" href="#">Sobre</a>
+        <a class="nav-link text-lg text-white" href="#">Contato</a>
+        <a class="btn-purple" href="#">Já tem uma conta?</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Section -->
+  <div class="content-container">
+    <h1>Bem-vindo ao Marketing Creativo!</h1>
+    <p>Transforme sua presença digital com serviços inovadores. Inscreva-se agora para receber atualizações exclusivas.</p>
+
+    <!-- Formulário de Inscrição -->
+    <div class="form-container">
+      <form id="form" onsubmit="return checkName()">
+        <input id="nome" class="input-field" type="text" placeholder="Seu Nome" required />
+        <input id="email" class="input-field" type="email" placeholder="Seu E-mail" required />
+        <button class="btn-submit" type="submit">Enviar &gt;</button>
+      </form>
+
+      <!-- Loader de Carregamento -->
+      <div id="loader" class="loader hidden"></div>
+    </div>
+
+    <!-- Conteúdo Exclusivo -->
+    <div id="content" class="content">
+      <h2 class="text-3xl font-bold text-purple-500">Conteúdo Exclusivo para Você!</h2>
+      <p class="text-lg">Você agora tem acesso a conteúdo personalizado. Continue explorando as ofertas e inovações do Marketing Creativo.</p>
+      <a href="#" class="btn-purple mt-6">Explorar Mais</a>
+    </div>
+  </div>
+
+  <script>
+    function checkName() {
+      var nome = document.getElementById('nome').value.trim().toLowerCase();
+      var validNames = ['tinkers', 'julinha', 'adr'];
+      
+      // Exibe animação de carregamento
+      document.getElementById('loader').classList.remove('hidden');
+      document.getElementById('content').classList.add('hidden');
+
+      // Simula a verificação do nome
+      setTimeout(function() {
+        if (validNames.includes(nome)) {
+          // Se o nome for válido, redireciona para uma segunda página
+          window.location.href = 'exclusive.html'; // Substitua pelo caminho da sua segunda página
+        } else {
+          // Caso contrário, exibe o conteúdo geral
+          document.getElementById('loader').classList.add('hidden');
+          document.getElementById('content').classList.remove('hidden');
+        }
+      }, 2000); // 2 segundos de animação
+
+      return false; // Impede o envio do formulário
+    }
+  </script>
+
+</body>
+
+</html>
